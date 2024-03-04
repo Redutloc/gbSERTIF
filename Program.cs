@@ -1,32 +1,22 @@
 ﻿
+//Задача 2
+int m = InputNumbers("Введите m: ");
+int n = InputNumbers("Введите n: ");
 
+int functionAkkerman = Ack(m, n);
 
-//Задача 3
-public class Example
+Console.Write($"Функция Аккермана = {functionAkkerman} ");
+
+int Ack(int m, int n)
 {
-    public static void reverseList<T>(List<T> list)
-    {
+  if (m == 0) return n + 1;
+  else if (n == 0) return Ack(m - 1, 1);
+  else return Ack(m - 1, Ack(m, n - 1));
+}
 
-        if (list == null || list.Count <= 1)
-        {
-            return;
-        }
-
-
-        T value = list[0];
-        list.RemoveAt(0);
-
-
-        reverseList(list);
-
-        list.Add(value);
-    }
-
-    public static void Main()
-    {
-        List<int> list = new List<int> { 2, 4, 6, 8 };
-
-        reverseList(list);
-        Console.WriteLine(String.Join(',', list));
-    }
+int InputNumbers(string input) 
+{
+  Console.Write(input);
+  int output = Convert.ToInt32(Console.ReadLine());
+  return output;
 }
